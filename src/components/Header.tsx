@@ -1,23 +1,26 @@
 import Image from "next/image";
-import { twMerge } from "tailwind-merge";
-import {Container} from "../components/Container";
+import Link from "next/link";
+import { Container } from "../components/Container";
 
 export const Header = () => {
-  const linkClasses = "flex uppercase hover:underline hover:underline-offset-4 p-2 md:px-4 md:py-3 bg-teal-300 font-bold hover:bg-teal-200"
+  const linkClasses = "flex uppercase hover:underline hover:underline-offset-4 p-2 md:px-4 md:py-3 ml-2 md:ml-6 bg-teal-300 font-bold hover:bg-teal-200"
   const mobileLinkClasses = "px-2 py-4 hover:underline hover:underline-offset-4"
+
+  const menuItems = [
+    {
+      label: "Case studies",
+      url: "/case-studies"
+    },
+    {
+      label: "About Us",
+      url: "/about-us"
+    }
+  ]
 
   return (
       <header className="py-4 border-b-2 border-b-teal-300">
         <Container className="flex justify-between align-middle items-center relative">
-          <div>
-            {/* <Image
-              className="dark:invert"
-              src="/logo.png"
-              alt="Norton Studios Logo"
-              width={180}
-              height={38}
-              priority
-            /> */}
+          <Link href="/">
             <Image
               className="dark:invert"
               src="/logo2.png"
@@ -26,15 +29,7 @@ export const Header = () => {
               height={84}
               priority
             />
-            {/* <Image
-              className="dark:invert"
-              src="/logo3.svg"
-              alt="Norton Studios Logo"
-              width={180}
-              height={84}
-              priority
-            /> */}
-          </div>
+          </Link>
 
           <details className="md:hidden">
               <summary className="list-none text-xl">
@@ -44,34 +39,16 @@ export const Header = () => {
                 <span className="sr-only">Menu</span>
               </summary>
               <nav className="absolute flex flex-col z-10 px-8 py-4 left-0 right-0 top-[86px] w-auto bg-slate-200">
-                <a
-                  href="/case-studies"
-                  className={mobileLinkClasses}
-                >
-                  Case Studios
-                </a>
-                <a
-                  href="/about-us"
-                  className={mobileLinkClasses}
-                >
-                  About Us
-                </a>
+                {menuItems.map((item) => {
+                  return <Link key={item.url} href={item.url} className={mobileLinkClasses}>{item.label}</Link>
+                })}
               </nav>
           </details>
 
           <nav className="hidden md:flex max-md:mt-6 max-md:py-6 max-md:border-t-2 max-md:border-t-teal-300 items-center">
-            <a
-              className={twMerge(linkClasses, 'mr-2 md:mr-6')}
-              href="/case-studies"
-            >
-            Case Studios
-            </a>
-            <a
-              className={linkClasses}
-              href="/about-us"
-            >
-              About Us
-            </a>
+            {menuItems.map((item) => {
+              return <Link key={item.url} href={item.url} className={linkClasses}>{item.label}</Link>
+            })}
           </nav>
         </Container>
       </header>
