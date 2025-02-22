@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "../components/Container";
 
 export const Header = () => {
-  const linkClasses = "flex uppercase hover:underline hover:underline-offset-4 p-2 md:px-4 md:py-3 ml-2 md:ml-6 bg-teal-300 font-bold hover:bg-teal-200"
+  const linkClasses = "flex uppercase hover:underline hover:underline-offset-4 p-2 md:px-4 md:py-3 ml-2 md:ml-6 text-white bg-blue-800 font-bold hover:bg-teal-200"
   const mobileLinkClasses = "px-2 py-4 hover:underline hover:underline-offset-4"
 
   const menuItems = [
@@ -18,15 +18,15 @@ export const Header = () => {
   ]
 
   return (
-      <header className="py-4 border-b-2 border-b-teal-300">
+      <header className="py-4 md:py-8 border-b-2 border-b-slate-200">
         <Container className="flex justify-between align-middle items-center relative">
           <Link href="/">
             <Image
-              className="dark:invert"
-              src="/logo2.png"
+              className="dark:invert w-[122px] h-[36px] md:w-[183px] md:h-[54px]"
+              src="/logo-new.svg"
               alt="Norton Studios Logo"
-              width={180}
-              height={84}
+              width={245}
+              height={72}
               priority
             />
           </Link>
@@ -38,14 +38,14 @@ export const Header = () => {
                 </svg>
                 <span className="sr-only">Menu</span>
               </summary>
-              <nav className="absolute flex flex-col z-10 px-8 py-4 left-0 right-0 top-[86px] w-auto bg-slate-200">
+              <nav className="absolute flex flex-col z-10 px-8 py-4 left-0 right-0 top-[54px] w-auto bg-slate-200">
                 {menuItems.map((item) => {
                   return <Link key={item.url} href={item.url} className={mobileLinkClasses}>{item.label}</Link>
                 })}
               </nav>
           </details>
 
-          <nav className="hidden md:flex max-md:mt-6 max-md:py-6 max-md:border-t-2 max-md:border-t-teal-300 items-center">
+          <nav className="hidden md:flex max-md:mt-6 max-md:py-6 max-md:border-t-2 max-md:border-t-slate-200 items-center">
             {menuItems.map((item) => {
               return <Link key={item.url} href={item.url} className={linkClasses}>{item.label}</Link>
             })}
