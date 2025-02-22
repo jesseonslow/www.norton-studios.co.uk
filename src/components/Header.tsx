@@ -3,11 +3,11 @@ import { twMerge } from "tailwind-merge";
 import {Container} from "../components/Container";
 
 export const Header = () => {
-  const linkClasses = "flex uppercase hover:underline hover:underline-offset-4 p-2 md:px-4 md:py-3 bg-teal-400 font-bold hover:bg-teal-200"
+  const linkClasses = "flex uppercase hover:underline hover:underline-offset-4 p-2 md:px-4 md:py-3 bg-teal-300 font-bold hover:bg-teal-200"
   const mobileLinkClasses = "px-2 py-4 hover:underline hover:underline-offset-4"
 
   return (
-      <header className="py-4 border-b-2 border-b-teal-500">
+      <header className="py-4 border-b-2 border-b-teal-300">
         <Container className="flex justify-between align-middle items-center relative">
           <div>
             {/* <Image
@@ -59,7 +59,7 @@ export const Header = () => {
               </nav>
           </details>
 
-          <nav className="hidden md:flex max-md:mt-6 max-md:py-6 max-md:border-t-2 max-md:border-t-teal-500 items-center">
+          <nav className="hidden md:flex max-md:mt-6 max-md:py-6 max-md:border-t-2 max-md:border-t-teal-300 items-center">
             <a
               className={twMerge(linkClasses, 'mr-2 md:mr-6')}
               href="/case-studies"
