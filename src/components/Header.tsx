@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Container } from "../components/Container";
 
 export const Header = () => {
-  const linkClasses = "flex uppercase hover:underline hover:underline-offset-4 p-2 md:px-4 md:py-3 ml-2 md:ml-6 text-white bg-blue-800 font-bold hover:bg-teal-200"
+  const linkClasses = "flex uppercase hover:underline hover:underline-offset-4 p-2 md:px-4 md:py-3 ml-2 md:ml-6 text-white bg-blue-800 font-bold hover:bg-blue-600"
   const mobileLinkClasses = "px-2 py-4 hover:underline hover:underline-offset-4"
 
   const menuItems = [
@@ -32,9 +32,9 @@ export const Header = () => {
           </Link>
 
           <details className="md:hidden">
-              <summary className="list-none text-xl">
+              <summary className="list-none text-xl cursor-pointer">
                 <svg width="38" height="38" aria-hidden="true" viewBox="0 0 24 24">
-                  <path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path>
+                  <path fill="#2B10A5" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path>
                 </svg>
                 <span className="sr-only">Menu</span>
               </summary>
