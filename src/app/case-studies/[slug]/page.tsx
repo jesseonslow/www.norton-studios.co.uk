@@ -26,8 +26,8 @@ export function generateStaticParams() {
 
 export const dynamicParams = false;
 
-interface PageParams {
-  params: {
+type PageParams = {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
