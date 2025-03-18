@@ -1,0 +1,69 @@
+collections:
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "src/content/index.mdx"
+        fields:
+          - { label: "Title", name: "title", widget: "string", default: "Norton Studios" }
+          - { label: "Subtitle", name: "subtitle", widget: "string", default: "Provider of Digital Solutions for the Public Sector" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - label: "About Us"
+        name: "about"
+        file: "src/content/about-us.mdx"
+        fields:
+          - { label: "Title", name: "title", widget: "string", default: "About Us" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - label: "How We Work"
+        name: "how-we-work"
+        file: "src/content/how-we-work.mdx"
+        fields:
+          - { label: "Title", name: "title", widget: "string", default: "How We Work" }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - label: "Case Studies"
+    name: "case-studies"
+    folder: "src/content/case-studies"
+    create: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: true }
+      - { label: "Client Name", name: "client", widget: "string", required: true }
+      - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
+      - { label: "Summary", name: "summary", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown", required: true }
+      - { label: "Technologies", name: "technologies", widget: "list", required: false }
+      - { label: "Publish Date", name: "date", widget: "datetime", required: false }
+
+  - label: "Team Members"
+    name: "team"
+    folder: "src/content/team"
+    create: true
+    slug: "{{slug}}"
+    extension: "mdx"
+    format: "frontmatter"
+    fields:
+      - { label: "Name", name: "title", widget: "string", required: true }
+      - { label: "Role", name: "role", widget: "string", required: true }
+      - { label: "Profile Image", name: "image", widget: "image", required: false }
+      - { label: "Bio", name: "body", widget: "markdown", required: true }
+      - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+      - { label: "GitHub", name: "github", widget: "string", required: false }
+      - { label: "Twitter", name: "twitter", widget: "string", required: false }
+
+backend:
+  name: github
+  repo: jesseonslow/www.norton-studios.co.uk
+  branch: master
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://www.norton-studios.co.uk
+display_url: https://www.norton-studios.co.uk
+logo_url: https://www.norton-studios.co.uk/small-logo.svg
+
+publish_mode: editorial_workflow
