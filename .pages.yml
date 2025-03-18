@@ -1,69 +1,143 @@
-collections:
-  - label: "Pages"
-    name: "pages"
-    files:
-      - label: "Home"
-        name: "home"
-        file: "src/content/index.mdx"
-        fields:
-          - { label: "Title", name: "title", widget: "string", default: "Norton Studios" }
-          - { label: "Subtitle", name: "subtitle", widget: "string", default: "Provider of Digital Solutions for the Public Sector" }
-          - { label: "Body", name: "body", widget: "markdown" }
-      - label: "About Us"
-        name: "about"
-        file: "src/content/about-us.mdx"
-        fields:
-          - { label: "Title", name: "title", widget: "string", default: "About Us" }
-          - { label: "Body", name: "body", widget: "markdown" }
-      - label: "How We Work"
-        name: "how-we-work"
-        file: "src/content/how-we-work.mdx"
-        fields:
-          - { label: "Title", name: "title", widget: "string", default: "How We Work" }
-          - { label: "Body", name: "body", widget: "markdown" }
-
-  - label: "Case Studies"
-    name: "case-studies"
-    folder: "src/content/case-studies"
-    create: true
-    slug: "{{slug}}"
-    extension: "mdx"
-    format: "frontmatter"
+content:
+  - name: pages
+    label: Pages
+    type: file
+    path: src/content/index.mdx
+    icon: home
     fields:
-      - { label: "Title", name: "title", widget: "string", required: true }
-      - { label: "Client Name", name: "client", widget: "string", required: true }
-      - { label: "Featured Image", name: "featured_image", widget: "image", required: false }
-      - { label: "Summary", name: "summary", widget: "text", required: false }
-      - { label: "Body", name: "body", widget: "markdown", required: true }
-      - { label: "Technologies", name: "technologies", widget: "list", required: false }
-      - { label: "Publish Date", name: "date", widget: "datetime", required: false }
+      - name: title
+        label: Title
+        type: string
+        default: Norton Studios
+      - name: subtitle
+        label: Subtitle
+        type: string
+        default: Provider of Digital Solutions for the Public Sector
+      - name: body
+        label: Content
+        type: text
 
-  - label: "Team Members"
-    name: "team"
-    folder: "src/content/team"
-    create: true
-    slug: "{{slug}}"
-    extension: "mdx"
-    format: "frontmatter"
+  - name: about
+    label: About Us
+    type: file
+    path: src/content/about-us.mdx
+    icon: info
     fields:
-      - { label: "Name", name: "title", widget: "string", required: true }
-      - { label: "Role", name: "role", widget: "string", required: true }
-      - { label: "Profile Image", name: "image", widget: "image", required: false }
-      - { label: "Bio", name: "body", widget: "markdown", required: true }
-      - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
-      - { label: "GitHub", name: "github", widget: "string", required: false }
-      - { label: "Twitter", name: "twitter", widget: "string", required: false }
+      - name: title
+        label: Title
+        type: string
+        default: About Us
+      - name: body
+        label: Content
+        type: text
+
+  - name: how_we_work
+    label: How We Work
+    type: file
+    path: src/content/how-we-work.mdx
+    icon: briefcase
+    fields:
+      - name: title
+        label: Title
+        type: string
+        default: How We Work
+      - name: body
+        label: Content
+        type: text
+
+  - name: case_studies
+    label: Case Studies
+    type: collection
+    path: src/content/case-studies
+    icon: folder
+    format: yaml-frontmatter
+    filename: '{primary}.mdx'
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: client
+        label: Client Name
+        type: string
+        required: true
+      - name: featured_image
+        label: Featured Image
+        type: image
+        required: false
+      - name: summary
+        label: Summary
+        type: text
+        required: false
+      - name: body
+        label: Content
+        type: text
+        required: true
+      - name: technologies
+        label: Technologies
+        type: text
+        required: false
+      - name: date
+        label: Publish Date
+        type: date
+        required: false
+    view:
+      fields: [title, client, date]
+      primary: title
+      sort: [ date, title ]
+      order: desc
+
+  - name: team
+    label: Team Members
+    type: collection
+    path: src/content/team
+    icon: users
+    format: yaml-frontmatter
+    filename: '{primary}.mdx'
+    fields:
+      - name: title
+        label: Name
+        type: string
+        required: true
+      - name: role
+        label: Role
+        type: string
+        required: true
+      - name: image
+        label: Profile Image
+        type: image
+        required: false
+      - name: body
+        label: Bio
+        type: text
+        required: true
+      - name: linkedin
+        label: LinkedIn
+        type: string
+        required: false
+      - name: github
+        label: GitHub
+        type: string
+        required: false
+      - name: twitter
+        label: Twitter
+        type: string
+        required: false
+    view:
+      fields: [title, role]
+      primary: title
+      sort: [ date, title ]
+      order: asc
+
+media:
+  input: public/images/uploads
+  output: /images/uploads
+
+site:
+  url: https://www.norton-studios.co.uk
+  logo: /small-logo.svg
 
 backend:
   name: github
   repo: jesseonslow/www.norton-studios.co.uk
   branch: master
-
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
-
-site_url: https://www.norton-studios.co.uk
-display_url: https://www.norton-studios.co.uk
-logo_url: https://www.norton-studios.co.uk/small-logo.svg
-
-publish_mode: editorial_workflow
