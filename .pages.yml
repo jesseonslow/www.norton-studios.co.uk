@@ -1,27 +1,35 @@
+media:
+  input: public/images/uploads
+  output: images/uploads
+  categories: ["image"]
+site:
+  url: https://www.sizebyte.com
+  logo: /small-logo.svg
 content:
-  - name: pages
-    label: Pages
+  - name: home
+    label: Home
     type: file
     path: src/content/index.mdx
-    icon: home
     fields:
-      - name: title
-        label: Title
+      - name: heading
+        label: Heading
         type: string
-        default: Norton Studios
-      - name: subtitle
-        label: Subtitle
+        default: SizeByte
+      - name: subheading
+        label: Subheading
         type: string
-        default: Provider of Digital Solutions for the Public Sector
+        default: Beautiful Websites Made Simple
       - name: body
         label: Content
-        type: text
-
+        type: rich-text
+        options:
+          image:
+            path: src/media/assets
+            extensions: [ jpg, jpeg, png ]
   - name: about
-    label: About Us
+    label: About
     type: file
     path: src/content/about-us.mdx
-    icon: info
     fields:
       - name: title
         label: Title
@@ -29,114 +37,79 @@ content:
         default: About Us
       - name: body
         label: Content
-        type: text
-
-  - name: how_we_work
-    label: How We Work
+        type: rich-text
+        options:
+          image:
+            path: src/media/assets
+            extensions: [ jpg, jpeg, png ]
+  - name: pricing
+    label: Pricing
     type: file
-    path: src/content/how-we-work.mdx
-    icon: briefcase
+    path: src/content/pricing.mdx
     fields:
       - name: title
         label: Title
         type: string
-        default: How We Work
+        default: Pricing
+      - name: body
+        label: Content
+        type: rich-text
+  - name: faq
+    label: FAQ
+    type: file
+    path: src/content/faq.mdx
+    fields:
+      - name: title
+        label: Title
+        type: string
+        default: Frequently Asked Questions
       - name: body
         label: Content
         type: text
-
-  - name: case_studies
-    label: Case Studies
-    type: collection
-    path: src/content/case-studies
-    icon: folder
-    format: yaml-frontmatter
-    filename: '{primary}.mdx'
+  - name: contact
+    label: Contact
+    type: file
+    path: src/content/contact.mdx
     fields:
       - name: title
         label: Title
         type: string
-        required: true
-      - name: client
-        label: Client Name
-        type: string
+        default: Contact Us
+      - name: body
+        label: Content
+        type: rich-text
+  - name: blog
+    label: Blog
+    type: collection
+    path: src/content/case-studies
+    format: yaml-frontmatter
+    filename: '{primary}.mdx'
+    fields:
+      - name: published
+        label: Published
+        type: boolean
         required: true
       - name: featured_image
         label: Featured Image
         type: image
         required: false
-      - name: summary
-        label: Summary
-        type: text
+      - name: title
+        label: Title
+        type: string
         required: false
       - name: body
         label: Content
-        type: text
+        type: rich-text
         required: true
-      - name: technologies
-        label: Technologies
-        type: text
-        required: false
       - name: date
         label: Publish Date
         type: date
         required: false
     view:
-      fields: [title, client, date]
+      fields: [title, published, date]
       primary: title
       sort: [ date, title ]
       order: desc
-
-  - name: team
-    label: Team Members
-    type: collection
-    path: src/content/team
-    icon: users
-    format: yaml-frontmatter
-    filename: '{primary}.mdx'
-    fields:
-      - name: title
-        label: Name
-        type: string
-        required: true
-      - name: role
-        label: Role
-        type: string
-        required: true
-      - name: image
-        label: Profile Image
-        type: image
-        required: false
-      - name: body
-        label: Bio
-        type: text
-        required: true
-      - name: linkedin
-        label: LinkedIn
-        type: string
-        required: false
-      - name: github
-        label: GitHub
-        type: string
-        required: false
-      - name: twitter
-        label: Twitter
-        type: string
-        required: false
-    view:
-      fields: [title, role]
-      primary: title
-      sort: [ date, title ]
-      order: asc
-
-media:
-  input: public/images/uploads
-  output: /images/uploads
-
-site:
-  url: https://www.norton-studios.co.uk
-  logo: /small-logo.svg
-
 backend:
   name: github
   repo: jesseonslow/www.norton-studios.co.uk
