@@ -1,21 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Container } from "../components/Container"
+import "./classless.css";
+import { Container } from "../components/Container";
+import { Header } from "../components/Header";
+import { Footer } from "../components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const poppins = Poppins({
+  weight: "400",
+  subsets: ['latin'],
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
-  title: "Norton Studios Ltd",
-  description: "Public Sector Digital Services",
+  title: "SizeByte",
+  description: "Beautiful Websites Made Simple.",
 };
 
 export default function RootLayout({
@@ -25,15 +24,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${poppins.className} antialiased dark:bg-slate-950`}>
         <div className="flex flex-col h-screen">
-          <main className="flex-grow font-[family-name:var(--font-geist-sans)] pt-20">
+          <Header/>
+          <main className="flex-grow pt-8">
             <Container>
               {children}
             </Container>
           </main>
+          <Footer/>
         </div>
       </body>
     </html>
