@@ -21,5 +21,5 @@ export default withMDX({
   compiler: {
     styledComponents: true
   },
-  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx']
+  pageExtensions: ['tsx', 'mdx']
 })
